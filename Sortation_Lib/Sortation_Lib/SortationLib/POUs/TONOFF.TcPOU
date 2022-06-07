@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="TONOFF" Id="{e443702c-a28c-4830-85fc-658524f944e7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TONOFF
+VAR_INPUT
+	IN: BOOL;
+	PT:TIME;
+END_VAR
+VAR_OUTPUT
+	Q:BOOL;
+END_VAR
+VAR
+	timeOn:TON;
+	timeOff:TOF;
+	state: INT;
+	Timer: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[timeOn(IN:=IN,PT:=PT,Q=>,ET=>);
+timeOff(In:=timeOn.Q,PT:=PT,Q=>Q,ET=>);
+]]></ST>
+    </Implementation>
+    <LineIds Name="TONOFF">
+      <LineId Id="17" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
